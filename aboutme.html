@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+    body {
+        padding:0; margin:0;
+        height:2000px;
+        display: block
+    }
+
+    .container,
+    .logo,
+    h1 {
+        font-family: verdana;
+        padding: 0; margin: 0;
+        width: 100%;
+        position: fixed;
+        z-index: 2
+    }
+
+    h2 {
+        color: black; font-size: 40px;
+        top: 40%
+    }
+
+    .container {
+        opacity: 0;
+        overflow: hidden;
+        left: 0;
+        height: 100%; width: 100%
+    }
+
+    .logo {
+        text-indent: 10000px;
+        overflow: hidden;
+        background-position-y: 50%;
+        background: white url(jarallax.jpg) center center no-repeat;
+        height: 100%; width: 100%;
+        display: block
+    }
+
+    nav {
+        left: 0; top: 0;
+        border-bottom: 2px solid black;
+        background: white;
+        width: 100%;
+        position: fixed;
+        z-index: 10
+    }
+
+    nav ul {
+        overflow: auto;
+        margin: 0;
+        list-style: none
+    }
+
+    nav li {
+        float: left
+    }
+
+nav a{
+color:#253652;
+font-family:verdana;
+display:block;
+padding:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+background:#253652;
+color:white;
+}
+
+a{
+color:#253652;
+font-family:verdana;
+text-decoration:none;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body onload="init()">
+
+    <nav>
+        <ul>
+
+            <li><a href="#" onclick="jarallax.jumpToProgress( 0, 2000, 30);">Intro</a></li>
+            <li><a href="#" onclick="jarallax.jumpToProgress( 10, 2000, 30);">New features</a></li>
+            <li><a href="#" onclick="jarallax.jumpToProgress( 20, 2000, 30);">Jump to progress</a></li>
+            <li><a href="#" onclick="jarallax.jumpToProgress( 30, 2000, 30);">Smooth scrollbar</a></li>
+
+        </ul>
+    </nav>
+
+    <h1 class="logo">Лого</h1>
+
+    <div class="container" id="slide1">
+        <h2>Секция 1</h2>
+        <p>Секция 1</p>
+    </div>
+
+    <div class="container" id="slide2">
+        <h2>Секция 2</h2>
+        <p>Секция 2</p>
+    </div>
+
+    <div class="container" id="slide3">
+        <h2>Секция 3</h2>
+        <p>Секция 3</p>
+    </div>
+
+    <div class="container" id="slide4">
+        <h2>Секция 4</h2>
+        <p>Секция 4</p>
+    </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jarallax-0.2.4b.min.js"></script>
+<script>
+    let jarallax;
+
+    init = function() {
+
+        jarallax = new Jarallax(new ControllerScroll(true));
+        let currentProgress = 0;
+        let progressSteps = 1 / 5;
+
+        jarallax.setDefault('.container', {opacity: 0, display: 'none'});
+
+        jarallax.addAnimation('.logo', [
+            {progress: '0', opacity: '1', backgroundPositionY: '50%'},
+            {progress: '10', opacity: '0', backgroundPositionY: '0%'},
+            {progress: '100%', opacity: '0', backgroundPositionY: '0%'}
+            ]);
+
+        let animation = jarallax.addAnimation('#slide1', [
+            {progress: '0', display: 'block', opacity: '0', top: '100%'},
+            {progress: '10', display: 'block', opacity: '1', top: '20%'},
+            {progress: '20', display: 'block', opacity: '0', top: '0%'}
+            ]);
+
+        jarallax.cloneAnimation('#slide2', {progress: '+10'}, animation);
+        jarallax.cloneAnimation('#slide3', {progress: '+20'}, animation);
+        jarallax.cloneAnimation('#slide4', {progress: '+30'}, animation);
+    }
+</script>
+
+</body>
+</html>
