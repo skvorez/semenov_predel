@@ -124,6 +124,7 @@ text-align: center;
 }
 
 #coverVideo--logo {
+	cursor: pointer;
 	content: '';
 		background-repeat: no-repeat;
 	background-position: center;
