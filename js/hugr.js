@@ -1,30 +1,40 @@
-window.onload = function () {
-    document.getElementById("main").focus();
-}
+let btnPlay = document.querySelector("#coverVideo--logo");
+let video = document.getElementById("coverVideo");
+let pocik = document.getElementById('trofei'), pocikAudio = document.getElementById('pocikAudo');
 
 document.getElementById('coverVideo').addEventListener('ended', myHandler, false);
 document.getElementById('pocikAudo').addEventListener('ended', fPlayer, false);
-var pocik = document.getElementById('trofei'), pocikAudio = document.getElementById('pocikAudo');
 pocik.addEventListener('click', fPlay, false);
 
+window.onload = function () {
+	// В фокус body на старте
+	document.getElementById("main").focus()
+}
+
+btnPlay.addEventListener("click", function() {
+	// Запуск видео по нажатию на кнопку
+	video.play()
+});
+
 function myHandler(e) {
+	// Ряд действий по завершению видео (показать шапку, скрыть видео-контейнер, удалить кнопку)
 	magnify("myimage", 3);
 	document.getElementById('hat').classList.add('hat-active');
 	document.getElementById('coverVideo').classList.add('cover-animation-finish');
 	document.getElementById('coverVideo--logo').remove();
-
 }
 
 function fPlay() {
-
+	// Проиграть звук
 	pocikAudio.play();
-
+	// Заблокировать пока не проиграет звук
 	if (pocikAudio.duration > 0 && !pocikAudio.paused) {
 		document.getElementById('trofei').classList.add('hat-notActive')
 	}
 }
 
 function fPlayer(e) {
+	// Удалить класс, когда проиграл звук
 	document.getElementById('trofei').classList.remove('hat-notActive')
 }
 
