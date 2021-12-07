@@ -5,6 +5,7 @@ let pocik = document.getElementById('trofei'), pocikAudio = document.getElementB
 document.getElementById('coverVideo').addEventListener('ended', myHandler, false);
 document.getElementById('pocikAudo').addEventListener('ended', fPlayer, false);
 pocik.addEventListener('click', fPlay, false);
+pocikAudio.volume = 0.4;
 
 window.onload = function () {
 	// В фокус body на старте
@@ -27,7 +28,7 @@ function myHandler(e) {
 function fPlay() {
 	// Проиграть звук
 	pocikAudio.play();
-	// Заблокировать пока не проиграет звук
+	// Заблокировать меню, когда играет
 	if (pocikAudio.duration > 0 && !pocikAudio.paused) {
 		document.getElementById('trofei').classList.add('hat-notActive')
 	}
