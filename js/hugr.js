@@ -5,7 +5,7 @@ let pocik = document.getElementById('trofei'), pocikAudio = document.getElementB
 document.getElementById('coverVideo').addEventListener('ended', myHandler, false);
 document.getElementById('pocikAudo').addEventListener('ended', fPlayer, false);
 pocik.addEventListener('click', fPlay, false);
-pocikAudio.volume = 0.4;
+pocikAudio.volume = 0.3;
 
 window.onload = function () {
 	// В фокус body на старте
