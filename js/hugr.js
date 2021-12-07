@@ -1,4 +1,5 @@
-let btnPlay = document.querySelector("#coverVideo--logo"),
+let hat = document.querySelector("#hat"),
+	btnPlay = document.querySelector("#coverVideo--logo"),
 	video = document.getElementById("coverVideo"),
 	pocik = document.getElementById('trofei'),
 	pocikAudio = document.getElementById('pocikAudo');
@@ -8,8 +9,9 @@ const anchors = document.querySelectorAll('a.scroll-to');
 if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
 	// Для телефонов
 	magnify("myimage", 3);
-	document.querySelectorAll("#coverVideo, #coverVideo--logo").remove();
-	document.getElementById('hat').classList.add('hat-active')
+	btnPlay.remove();
+	video.remove();
+	hat.classList.add('hat-active')
 }
 
 window.onload = function () {
@@ -29,9 +31,9 @@ btnPlay.addEventListener("click", function() {
 function myHandler(e) {
 	// Ряд действий по завершению видео (показать шапку, скрыть видео-контейнер, удалить кнопку)
 	magnify("myimage", 3);
-	document.getElementById('hat').classList.add('hat-active');
-	document.getElementById('coverVideo').classList.add('cover-animation-finish');
-	document.getElementById('coverVideo--logo').remove()
+	hat.classList.add('hat-active');
+	video.classList.add('cover-animation-finish');
+	btnPlay.remove()
 }
 
 function fPlay() {
@@ -67,11 +69,9 @@ function magnify(imgID, zoom) {
 	// zoom img
 	let img, glass, w, h, bw;
 	img = document.getElementById(imgID);
-
-	/* Создать увеличительное стекло: */
+	// Создать увеличительное стекло:
 	glass = document.createElement("DIV");
 	glass.setAttribute("class", "img-magnifier-glass");
-
 	// Вставить увеличительное стекло:
 	img.parentElement.insertBefore(glass, img);
 
@@ -99,7 +99,6 @@ function magnify(imgID, zoom) {
 	// Выполните функцию, когда кто-то перемещает лупу по изображению:
 	glass.addEventListener("mousemove", moveMagnifier);
 	img.addEventListener("mousemove", moveMagnifier);
-
 	// а также для сенсорных экранов:
 	glass.addEventListener("touchmove", moveMagnifier);
 	img.addEventListener("touchmove", moveMagnifier);
@@ -181,24 +180,11 @@ function createParticle (x, y, type) {
 	let delay = Math.random() * 200;
 
 	switch (type) {
-
-		case 'square':
-		particle.style.background = `hsl(${Math.random() * 50 + 200}, 70%, 60%)`;
-		particle.style.border = '1px solid white';
-		break;
-
 		case 'symbol':
 		particle.innerHTML = ['&#128162;', '&#128165;', '&#128162;', '&#128165;', '&#128162;', '&#128165;', '&#128162;'][Math.floor(Math.random() * 7)];
 		particle.style.color = `hsl(${Math.random() * 50 + 200}, 70%, 60%)`;
 		particle.style.fontSize = `${Math.random() * 24 + 10}px`;
 		width = height = 'auto';
-		break;
-
-		case 'line':
-		particle.style.background = `hsl(${Math.random() * 50 + 200}, 70%, 50%)`;
-		height = 1;
-		rotation += 1000;
-		delay = Math.random() * 1000;
 		break;
 	}
 
