@@ -1,16 +1,23 @@
-let btnPlay = document.querySelector("#coverVideo--logo");
-let video = document.getElementById("coverVideo");
-let pocik = document.getElementById('trofei'), pocikAudio = document.getElementById('pocikAudo');
+let btnPlay = document.querySelector("#coverVideo--logo"),
+		video = document.getElementById("coverVideo"),
+		pocik = document.getElementById('trofei'),
+		pocikAudio = document.getElementById('pocikAudo');
 
-document.getElementById('coverVideo').addEventListener('ended', myHandler, false);
-document.getElementById('pocikAudo').addEventListener('ended', fPlayer, false);
-pocik.addEventListener('click', fPlay, false);
-pocikAudio.volume = 0.3;
+if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+	// Не для телефонов
+	document.getElementById('coverVideo').classList.add('cover-animation-finish');
+	document.getElementById('coverVideo--logo').remove()
+}
 
 window.onload = function () {
 	// В фокус body на старте
 	document.getElementById("main").focus()
 }
+
+video.addEventListener('ended', myHandler, false);
+pocikAudio.addEventListener('ended', fPlayer, false);
+pocik.addEventListener('click', fPlay, false);
+pocikAudio.volume = 0.3;
 
 btnPlay.addEventListener("click", function() {
 	// Запуск видео по нажатию на кнопку
