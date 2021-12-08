@@ -139,7 +139,7 @@ function magnify(imgID, zoom) {
 }
 
 function pop (e) {
-	// 
+
 	let amount = 30;
 
 	switch (e.target.dataset.type) {
