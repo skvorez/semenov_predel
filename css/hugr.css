@@ -21,6 +21,7 @@
 }
 
 * {
+	box-sizing: border-box;
 	padding: 0; margin: 0
 }
 
@@ -178,7 +179,7 @@ z-index: 1;
 }
 
 #hat {
-	font-size: 20px; font-family: 'Bokor', cursive; text-align: center;
+	font-size: 6vh; font-family: 'Bokor', cursive; text-align: center;
 	-ms-transition: 0.2s;
 	-o-transition: 0.2s;
 	-moz-transition: 0.2s;
@@ -243,8 +244,6 @@ particle {
 	position: fixed;
 	z-index: 3
 }
-
-* {box-sizing: border-box;}
 
 .img-magnifier-container {
   position: relative;
